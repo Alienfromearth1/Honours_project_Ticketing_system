@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaControllerCode.OpenTicketsGUIController">
+   <children>
+      <Pane prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <Button fx:id="btnMenu" layoutX="94.0" layoutY="504.0" mnemonicParsing="false" onAction="#ReturnToMenu" text="Menu" />
+            <Button fx:id="btnSelectTicket" layoutX="553.0" layoutY="454.0" mnemonicParsing="false" text="Select Ticket" />
+            <ListView fx:id="lstOpenTickets" layoutX="294.0" layoutY="107.0" prefHeight="200.0" prefWidth="200.0" />
+         </children></Pane>
+   </children>
+</AnchorPane>

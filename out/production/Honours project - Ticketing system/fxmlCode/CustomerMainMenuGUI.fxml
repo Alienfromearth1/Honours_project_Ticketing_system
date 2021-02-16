@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="mainMenuPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaControllerCode.CustomerGUIController">
+   <children>
+      <Pane prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <Button fx:id="btnCustomerTicketCreate" layoutX="221.0" layoutY="198.0" mnemonicParsing="false" onAction="#CustomerMainMenuOptions" text="Create New Ticket" />
+            <Button fx:id="btnViewOngoingTicket" layoutX="493.0" layoutY="198.0" mnemonicParsing="false" onAction="#CustomerMainMenuOptions" text="View Ongoing Ticket" />
+            <Button fx:id="btnViewPreviousTicket" layoutX="221.0" layoutY="343.0" mnemonicParsing="false" onAction="#CustomerMainMenuOptions" text="View previous tickets" />
+            <Button fx:id="btnCustomerLogOut" layoutX="493.0" layoutY="356.0" mnemonicParsing="false" onAction="#CustomerMainMenuOptions" text="Logout" />
+         </children></Pane>
+   </children>
+</AnchorPane>

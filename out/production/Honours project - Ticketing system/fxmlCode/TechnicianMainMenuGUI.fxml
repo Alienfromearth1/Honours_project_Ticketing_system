@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaControllerCode.TechnicianGUIController">
+   <children>
+       <Pane prefHeight="600.0" prefWidth="800.0">
+           <children>
+               <Button fx:id="btnTechnicianViewOpenTickets" layoutX="221.0" layoutY="198.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" text="View Open Tickets" />
+               <Button fx:id="btnTechnicianViewOngoingTicket" layoutX="493.0" layoutY="198.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" text="View Ongoing Ticket" />
+               <Button fx:id="btnTechnicianViewPreviousTicket" layoutX="221.0" layoutY="343.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" text="View previous tickets" />
+               <Button fx:id="btnTechnicianLogOut" layoutX="493.0" layoutY="356.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" text="Logout" />
+           </children></Pane>
+   </children>
+</AnchorPane>
