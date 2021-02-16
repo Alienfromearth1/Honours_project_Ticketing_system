@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaControllerCode.RemoveUserGUIController">
+   <children>
+      <Pane prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <Button fx:id="btnMenu" layoutX="122.0" layoutY="499.0" mnemonicParsing="false" onAction="#ReturnToMenu" text="Menu" />
+            <Button fx:id="btnRemoveUser" layoutX="609.0" layoutY="499.0" mnemonicParsing="false" text="Remove User" />
+            <ListView fx:id="lstUsers" layoutX="306.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
+         </children></Pane>
+   </children>
+</AnchorPane>
