@@ -16,14 +16,16 @@ public class Users {
 
     public void LoginToSystem()
     {
-
-    }
-
-    public void CreateUser(String password, String username) throws NoSuchAlgorithmException {
         String salt = "1768f17d8686ce105b4b58def546bbee39e86eb8b5f5860a3cc7e72cac72315cb4d7abe5cf513e201b3e0c44cfe8fda436ad877e91c6806644b1d609382a83dd";
-        System.out.println(password);
-        System.out.println(get_SHA_512_SecurePassword(password, salt));
     }
+
+    public void CreateUser(String fName, String sName, String username, String password, boolean technician) throws NoSuchAlgorithmException {
+        String salt = "1768f17d8686ce105b4b58def546bbee39e86eb8b5f5860a3cc7e72cac72315cb4d7abe5cf513e201b3e0c44cfe8fda436ad877e91c6806644b1d609382a83dd";
+        String hashedPassword = get_SHA_512_SecurePassword(password, salt);
+        database.AddUsers(fName, sName, username,technician, hashedPassword);
+    }
+
+
 
     public String get_SHA_512_SecurePassword(String passwordToHash, String salt){
         String generatedPassword = null;

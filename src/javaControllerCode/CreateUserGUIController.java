@@ -8,22 +8,23 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.security.NoSuchAlgorithmException;
+import javax.swing.*;
 
 public class CreateUserGUIController {
+
 
     // ============================== VARIABLES ==============================
     Tickets tickets = new Tickets();
     @FXML private Button btnMenu;
-    @FXML private Button btnCreateUser;
     @FXML private TextField txtFname;
     @FXML private TextField txtSname;
     @FXML private TextField txtUserName;
-    @FXML private TextField txtPassword;
-    @FXML private TextField txtConfirmPass;
+    @FXML private PasswordField txtPassword;
+    @FXML private PasswordField txtConfirmPass;
     @FXML private CheckBox chkTechnician;
     // ============================== CONSTRUCTOR ==============================
     public CreateUserGUIController(){}
@@ -42,8 +43,14 @@ public class CreateUserGUIController {
     }
 
 
-    public void CreateUser(ActionEvent actionEvent) throws NoSuchAlgorithmException
+    public void CreateUser(ActionEvent actionEvent) throws Exception
     {
-        tickets.getUsers().CreateUser(txtConfirmPass.getText(), txtUserName.getText());
+        if (txtConfirmPass.getText().equals(txtPassword.getText()))
+        {
+            tickets.getUsers().CreateUser(txtFname.getText(), txtSname.getText(), txtUserName.getText(), txtPassword.getText(), chkTechnician.isSelected());
+            JOptionPane.showMessageDialog (null, "User successfully added", "User added", JOptionPane.INFORMATION_MESSAGE);
+            ReturnToMenu(actionEvent);
+        }
+
     }
 }
