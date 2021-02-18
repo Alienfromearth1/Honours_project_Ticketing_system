@@ -44,6 +44,25 @@ public class Database {
             System.out.println(e);
         }
     }
+
+    public void LoadUsers(ListView lstUsers)
+    {
+        try
+        {
+            MongoCollection<Document> col = database.getCollection("Accounts");
+            MongoCursor<Document> cur = col.find().iterator();
+            while (cur.hasNext())
+            {
+                Document doc = cur.next();
+                List list = new ArrayList(doc.values());
+                lstUsers.getItems().add(list.get(3));
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+    }
     public void AddUsers(String fName, String sName, String username, boolean technician, String hashedPassword)
     {
         MongoCollection<Document> col = database.getCollection("Accounts");
@@ -56,10 +75,32 @@ public class Database {
                 ("Admin", "false");
         col.insertOne(user);
     }
+
     public void RemoveUsers(String username)
     {
-        MongoCollection<Document> col = database.getCollection("Accounts");
-        col.deleteOne(Filters.eq("U_Name", username));
+
+        try
+        {
+            MongoCollection<Document> col = database.getCollection("Accounts");
+            MongoCursor<Document> cur = col.find().iterator();
+            label:
+            while (cur.hasNext())
+            {
+                Document doc = cur.next();
+                List list = new ArrayList(doc.values());
+                if(username.equals(list.get(3)))
+                {
+                    col.deleteOne(Filters.eq("U_Name", username));
+               break label;
+                }
+
+
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
     }
 
 }

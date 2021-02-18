@@ -1,5 +1,6 @@
 package javaControllerCode;
 
+import javaCode.Tickets;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,15 +11,16 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 public class RemoveUserGUIController {
+Tickets tickets = new Tickets();
 
     // ============================== VARIABLES ==============================
     @FXML private Button btnMenu;
     @FXML private Button btnRemoveUser;
     @FXML private ListView lstUsers;
+    @FXML private Button load;
 
     // ============================== CONSTRUCTOR ==============================
     public RemoveUserGUIController(){}
-
 
     // ============================== BUTTON CONTROL ==============================
     public void ReturnToMenu(ActionEvent event) throws Exception
@@ -33,4 +35,13 @@ public class RemoveUserGUIController {
         stage.show();
     }
 
+    public void loadUsers(ActionEvent actionEvent) {
+        tickets.getUsers().getDatabase().LoadUsers(lstUsers);
+    }
+
+    public void RemoveUser(ActionEvent actionEvent) {
+        System.out.println(lstUsers.getSelectionModel().getSelectedItem().toString());
+
+        tickets.getUsers().getDatabase().RemoveUsers(lstUsers.getSelectionModel().getSelectedItem().toString());
+    }
 }
