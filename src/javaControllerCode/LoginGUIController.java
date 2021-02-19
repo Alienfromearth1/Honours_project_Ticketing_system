@@ -26,13 +26,12 @@ public class LoginGUIController {
     public void AttemptLogin() throws Exception
     {
         try {
-            boolean technician = ticket.getUsers().getDatabase().userTypeCheck(txtUsername.getText(), 5);
-            boolean admin = ticket.getUsers().getDatabase().userTypeCheck(txtUsername.getText(), 6);
+            final boolean technician = ticket.getUsers().getDatabase().userTypeCheck(txtUsername.getText(), 5);
+            final boolean admin = ticket.getUsers().getDatabase().userTypeCheck(txtUsername.getText(), 6);
             String guiType = ticket.getUsers().LoginToSystem(txtUsername.getText(), pTxtPassword.getText(), technician, admin);
 
             Stage stage;
             Parent root;
-
             stage = (Stage) btnLogin.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource(guiType));
             Scene scene = new Scene(root);
