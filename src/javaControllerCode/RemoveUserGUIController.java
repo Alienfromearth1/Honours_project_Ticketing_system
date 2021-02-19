@@ -40,8 +40,6 @@ Tickets tickets = new Tickets();
     }
 
     public void RemoveUser(ActionEvent actionEvent) {
-        System.out.println(lstUsers.getSelectionModel().getSelectedItem().toString());
-
         tickets.getUsers().getDatabase().RemoveUsers(lstUsers.getSelectionModel().getSelectedItem().toString());
     }
 }

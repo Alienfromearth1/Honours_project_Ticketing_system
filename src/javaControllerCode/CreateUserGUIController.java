@@ -12,8 +12,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javax.swing.*;
-
 public class CreateUserGUIController {
 
 
@@ -42,14 +40,11 @@ public class CreateUserGUIController {
         stage.show();
     }
 
-
     public void CreateUser(ActionEvent actionEvent) throws Exception
     {
         if (txtConfirmPass.getText().equals(txtPassword.getText()))
         {
-            tickets.getUsers().CreateUser(txtFname.getText(), txtSname.getText(), txtUserName.getText(), txtPassword.getText(), chkTechnician.isSelected());
-            JOptionPane.showMessageDialog (null, "User successfully added", "User added", JOptionPane.INFORMATION_MESSAGE);
-            ReturnToMenu(actionEvent);
+            tickets.getUsers().CreateUser(txtFname.getText(), txtSname.getText(), txtUserName.getText(), txtPassword.getText(), txtConfirmPass.getText(), chkTechnician.isSelected(), btnMenu);
         }
 
     }

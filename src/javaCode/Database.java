@@ -20,49 +20,66 @@ public class Database {
     MongoDatabase database = mongoClient.getDatabase("TicketingSystem");
 
     // ============================== CONSTRUCTOR ==============================
-    public Database(){
+    public Database() {
         //Stops console spam from MongoDB
-        Logger mongoLogger = Logger.getLogger( "org.mongodb.driver" );
+        Logger mongoLogger = Logger.getLogger("org.mongodb.driver");
         mongoLogger.setLevel(Level.SEVERE);
     }
 
-    public void LoadPreviousTickets(ListView lstPreviousTicket)
-    {
-        try
-        {
+    public void LoadPreviousTickets(ListView lstPreviousTicket) {
+        try {
             MongoCollection<Document> col = database.getCollection("Tickets");
             MongoCursor<Document> cur = col.find().iterator();
-            while (cur.hasNext())
-            {
+            while (cur.hasNext()) {
                 Document doc = cur.next();
                 List list = new ArrayList(doc.values());
                 lstPreviousTicket.getItems().add(list.get(1));
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
 
-    public void LoadUsers(ListView lstUsers)
-    {
-        try
-        {
+    public void LoadUsers(ListView lstUsers) {
+        try {
             MongoCollection<Document> col = database.getCollection("Accounts");
             MongoCursor<Document> cur = col.find().iterator();
-            while (cur.hasNext())
-            {
+            while (cur.hasNext()) {
                 Document doc = cur.next();
                 List list = new ArrayList(doc.values());
                 lstUsers.getItems().add(list.get(3));
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
+
+    public boolean CheckUsersNotDuplicate(String username) {
+        boolean duplicate = false;
+        try {
+            MongoCollection<Document> col = database.getCollection("Accounts");
+            MongoCursor<Document> cur = col.find().iterator();
+
+            while (cur.hasNext())
+            {
+                Document doc = cur.next();
+                List list = new ArrayList(doc.values());
+                if (list.get(3).equals(username))
+                {
+                    duplicate = true;
+                    break;
+                }
+                else
+                    {
+                    duplicate = false;
+                    }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return duplicate;
+    }
+
     public void AddUsers(String fName, String sName, String username, boolean technician, String hashedPassword)
     {
         MongoCollection<Document> col = database.getCollection("Accounts");
@@ -78,12 +95,10 @@ public class Database {
 
     public void RemoveUsers(String username)
     {
-
         try
         {
             MongoCollection<Document> col = database.getCollection("Accounts");
             MongoCursor<Document> cur = col.find().iterator();
-            label:
             while (cur.hasNext())
             {
                 Document doc = cur.next();
@@ -91,10 +106,8 @@ public class Database {
                 if(username.equals(list.get(3)))
                 {
                     col.deleteOne(Filters.eq("U_Name", username));
-               break label;
+               break;
                 }
-
-
             }
         }
         catch (Exception e)
