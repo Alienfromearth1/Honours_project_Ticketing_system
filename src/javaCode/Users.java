@@ -17,9 +17,33 @@ public class Users {
         return database;
     }
 
-    public void LoginToSystem()
+
+
+
+    public String LoginToSystem(String username, String password, boolean technician, boolean admin)
     {
         String salt = "1768f17d8686ce105b4b58def546bbee39e86eb8b5f5860a3cc7e72cac72315cb4d7abe5cf513e201b3e0c44cfe8fda436ad877e91c6806644b1d609382a83dd";
+        String hashedPassword = get_SHA_512_SecurePassword(password, salt);
+
+    boolean realUser = database.LoginToSystem(username, hashedPassword);
+String guiType = null;
+    if(realUser)
+    {
+        if (technician)
+        {
+            guiType = "../fxmlCode/TechnicianMainMenuGUI.fxml";
+        }
+        else if (admin)
+        {
+            guiType = "../fxmlCode/AdminMainMenuGUI.fxml";
+        }
+        else
+        {
+            guiType = "../fxmlCode/CustomerMainMenuGUI.fxml";
+        }
+    }
+
+    return guiType;
     }
 
     public void CreateUser(String fName, String sName, String username, String password, String confirmPassword, boolean technician, Button btnMenu) throws NoSuchAlgorithmException
@@ -27,14 +51,13 @@ public class Users {
         boolean duplicateUsername = database.CheckUsersNotDuplicate(username);
         boolean confirmedPass = ConfirmPassword(password, confirmPassword);
 
-        if (duplicateUsername == false && confirmedPass == false)
+        if (!duplicateUsername & confirmedPass)
         {
             String salt = "1768f17d8686ce105b4b58def546bbee39e86eb8b5f5860a3cc7e72cac72315cb4d7abe5cf513e201b3e0c44cfe8fda436ad877e91c6806644b1d609382a83dd";
             String hashedPassword = get_SHA_512_SecurePassword(password, salt);
             database.AddUsers(fName, sName, username, technician, hashedPassword);
             JOptionPane.showMessageDialog (null, "User successfully added", "User added", JOptionPane.INFORMATION_MESSAGE);
             btnMenu.fire();
-
         }
 
         else

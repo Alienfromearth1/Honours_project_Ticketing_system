@@ -26,6 +26,76 @@ public class Database {
         mongoLogger.setLevel(Level.SEVERE);
     }
 
+    //Checks if user is a technician or admin. does this by checking if the technician field and admin field are true in the database.
+    public boolean userTypeCheck(String username, int idNum)
+    {
+        boolean userType = false;
+
+        label:
+        try {
+            MongoCollection<Document> col = database.getCollection("Accounts");
+            MongoCursor<Document> cur = col.find().iterator();
+            while (cur.hasNext()) {
+                Document doc = cur.next();
+                List list = new ArrayList(doc.values());
+                if (username.equals(list.get(3)) && list.get(idNum).equals(true))
+                {
+                    System.out.println(idNum);
+                    userType = true;
+                    break label;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return userType;
+    }
+
+    public void CheckIfAdmin(String username)
+    {
+
+    }
+
+
+    public boolean LoginToSystem(String username, String password) {
+        boolean validLogin = false;
+
+        label:
+        try {
+            MongoCollection<Document> col = database.getCollection("Accounts");
+            MongoCursor<Document> cur = col.find().iterator();
+            while (cur.hasNext()) {
+                Document doc = cur.next();
+                List list = new ArrayList(doc.values());
+                if (username.equals(list.get(3)) && password.equals(list.get(4)))
+                {
+                    validLogin = true;
+                    break label;
+                }
+                else
+                {
+                    validLogin = false;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return validLogin;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public void LoadPreviousTickets(ListView lstPreviousTicket) {
         try {
             MongoCollection<Document> col = database.getCollection("Tickets");

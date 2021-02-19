@@ -1,5 +1,6 @@
 package javaControllerCode;
 
+import javaCode.Tickets;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,8 +10,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+
 public class LoginGUIController {
     // ============================== LOGIN VARIABLES ==============================
+    Tickets ticket = new Tickets();
     @FXML private Button btnLogin;
     @FXML private PasswordField pTxtPassword;
     @FXML private TextField txtUsername;
@@ -22,15 +25,26 @@ public class LoginGUIController {
     @FXML
     public void AttemptLogin() throws Exception
     {
-        Stage stage;
-        Parent root;
+        try {
+            boolean technician = ticket.getUsers().getDatabase().userTypeCheck(txtUsername.getText(), 5);
+            boolean admin = ticket.getUsers().getDatabase().userTypeCheck(txtUsername.getText(), 6);
+            String guiType = ticket.getUsers().LoginToSystem(txtUsername.getText(), pTxtPassword.getText(), technician, admin);
 
-        stage = (Stage) btnLogin.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("../fxmlCode/AdminMainMenuGUI.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+            Stage stage;
+            Parent root;
+
+            stage = (Stage) btnLogin.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource(guiType));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
     }
+
 
     @FXML //Closes the system.
     public void CloseApplication() {System.exit(0);}
