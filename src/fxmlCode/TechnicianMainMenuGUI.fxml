@@ -11,6 +11,7 @@
                <Button fx:id="btnTechnicianViewOngoingTicket" layoutX="493.0" layoutY="198.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" text="View Ongoing Ticket" />
                <Button fx:id="btnTechnicianViewPreviousTicket" layoutX="221.0" layoutY="343.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" text="View previous tickets" />
                <Button fx:id="btnTechnicianLogOut" layoutX="493.0" layoutY="356.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" text="Logout" />
+            <Label layoutX="193.0" layoutY="137.0" text="Label" />
            </children></Pane>
    </children>
 </AnchorPane>

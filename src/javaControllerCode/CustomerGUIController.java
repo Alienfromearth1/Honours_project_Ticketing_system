@@ -1,52 +1,37 @@
 package javaControllerCode;
 
+import javaCode.Menu;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
 
-public class CustomerGUIController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class CustomerGUIController implements Initializable {
 
     // ============================== VARIABLES ==============================
     @FXML private Button btnCustomerTicketCreate;
     @FXML private Button btnViewOngoingTicket;
     @FXML private Button btnViewPreviousTicket;
     @FXML private Button btnCustomerLogOut;
+    private Menu menu = new Menu();
+
+
+    //Initialise
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 
     // ============================== CONSTRUCTOR ==============================
     public CustomerGUIController(){}
 
     // ============================== BUTTON CONTROLS ==============================
         @FXML
-        private void CustomerMainMenuOptions(ActionEvent event) throws Exception {
-            Stage stage;
-            Parent root;
-
-            if(event.getSource()==btnCustomerTicketCreate)
-            {
-                stage = (Stage) btnCustomerTicketCreate.getScene().getWindow();
-                root = FXMLLoader.load(getClass().getResource("../fxmlCode/CreateNewTicketGUI.fxml"));
-            }
-            else if(event.getSource()==btnCustomerLogOut)
-            {
-                stage = (Stage) btnCustomerLogOut.getScene().getWindow();
-                root = FXMLLoader.load(getClass().getResource("../fxmlCode/LoginGUI.fxml"));
-            }
-            else if(event.getSource()==btnViewOngoingTicket)
-            {
-                stage = (Stage) btnViewOngoingTicket.getScene().getWindow();
-                root = FXMLLoader.load(getClass().getResource("../fxmlCode/OpenTicketChatGUI.fxml"));
-            }
-            else
-            {
-                stage = (Stage) btnViewPreviousTicket.getScene().getWindow();
-                root = FXMLLoader.load(getClass().getResource("../fxmlCode/ViewPreviousTicketGUI.fxml"));
-            }
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+        private void CustomerMainMenuOptions(ActionEvent event) throws Exception
+        {
+            menu.CustomerMainMenuOptions(event, btnCustomerTicketCreate, btnCustomerLogOut, btnViewOngoingTicket, btnViewPreviousTicket);
         }
 }

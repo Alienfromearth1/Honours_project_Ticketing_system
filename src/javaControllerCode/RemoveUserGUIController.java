@@ -1,17 +1,17 @@
 package javaControllerCode;
 
-import javaCode.Tickets;
+import javaCode.Menu;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.stage.Stage;
 
-public class RemoveUserGUIController {
-Tickets tickets = new Tickets();
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class RemoveUserGUIController implements Initializable {
+    Menu menu = new Menu();
 
     // ============================== VARIABLES ==============================
     @FXML private Button btnMenu;
@@ -19,27 +19,23 @@ Tickets tickets = new Tickets();
     @FXML private ListView lstUsers;
     @FXML private Button load;
 
+    //Initialise
+    @Override
+    public void initialize(URL location, ResourceBundle resources)
+    {
+        menu.getTickets().getUsers().getDatabase().RemoveUsers(lstUsers.getSelectionModel().getSelectedItem().toString());
+    }
+
     // ============================== CONSTRUCTOR ==============================
     public RemoveUserGUIController(){}
 
     // ============================== BUTTON CONTROL ==============================
     public void ReturnToMenu(ActionEvent event) throws Exception
     {
-        Stage stage;
-        Parent root;
-
-        stage = (Stage) btnMenu.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("../fxmlCode/AdminMainMenuGUI.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        menu.ReturnToMenu(btnMenu, menu.getGuiType());
     }
 
     public void loadUsers(ActionEvent actionEvent) {
-        tickets.getUsers().getDatabase().LoadUsers(lstUsers);
-    }
-
-    public void RemoveUser(ActionEvent actionEvent) {
-        tickets.getUsers().getDatabase().RemoveUsers(lstUsers.getSelectionModel().getSelectedItem().toString());
+        menu.getTickets().getUsers().getDatabase().LoadUsers(lstUsers);
     }
 }

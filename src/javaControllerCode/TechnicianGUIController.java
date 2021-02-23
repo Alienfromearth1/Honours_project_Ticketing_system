@@ -1,52 +1,41 @@
 package javaControllerCode;
 
+import javaCode.Menu;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class TechnicianGUIController {
+public class TechnicianGUIController implements Initializable {
 
     // ============================== VARIABLES ==============================
     @FXML private Button btnTechnicianViewOpenTickets;
     @FXML private Button btnTechnicianViewOngoingTicket;
     @FXML private Button btnTechnicianViewPreviousTicket;
     @FXML private Button btnTechnicianLogOut;
+    private Menu menu = new Menu();
+
+    //Initialise
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 
     // ============================== CONSTRUCTOR ==============================
     public TechnicianGUIController(){}
 
     // ============================== BUTTON CONTROL ==============================
-    public void TechnicianMainMenuOptions(ActionEvent event) throws IOException {
-        Stage stage;
-        Parent root;
 
-        if(event.getSource()==btnTechnicianViewOpenTickets){
-            stage = (Stage) btnTechnicianViewOpenTickets.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("../fxmlCode/OpenTicketsListGUI.fxml"));
-        }
-        else if(event.getSource()==btnTechnicianLogOut)
-        {
-            stage = (Stage) btnTechnicianLogOut.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("../fxmlCode/LoginGUI.fxml"));
-        }
-        else if(event.getSource()==btnTechnicianViewOngoingTicket)
-        {
-            stage = (Stage) btnTechnicianViewOngoingTicket.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("../fxmlCode/OpenTicketChatGUI.fxml"));
-        }
-        else
-        {
-            stage = (Stage) btnTechnicianViewPreviousTicket.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("../fxmlCode/ViewPreviousTicketGUI.fxml"));
-        }
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void test()
+    {
+
+    }
+
+    public void TechnicianMainMenuOptions(ActionEvent event) throws IOException {
+       menu.TechnicianMainMenuOptions(event, btnTechnicianLogOut, btnTechnicianViewOngoingTicket, btnTechnicianViewOpenTickets, btnTechnicianViewPreviousTicket);
     }
 }

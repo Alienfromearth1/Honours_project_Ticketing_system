@@ -1,24 +1,32 @@
 package javaControllerCode;
 
+import javaCode.Menu;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
-public class TicketChatGUIController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class TicketChatGUIController implements Initializable {
 
     // ============================== VARIABLES ==============================
+    Menu menu = new Menu();
     @FXML private Button btnMenu;
     @FXML private Button btnCloseTicket;
     @FXML private TextField txtChat;
     @FXML private ListView lstChat;
     @FXML private Label lblInformation;
+
+    //Initialise
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 
     // ============================== CONSTRUCTOR ==============================
     public TicketChatGUIController(){}
@@ -27,13 +35,6 @@ public class TicketChatGUIController {
     @FXML
     public void ReturnToMenu(ActionEvent event) throws Exception
     {
-        Stage stage;
-        Parent root;
-
-        stage = (Stage) btnMenu.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("../fxmlCode/AdminMainMenuGUI.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    menu.ReturnToMenu(btnMenu, menu.getGuiType());
     }
 }

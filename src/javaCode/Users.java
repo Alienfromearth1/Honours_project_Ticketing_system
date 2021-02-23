@@ -25,6 +25,7 @@ public class Users {
         String salt = "1768f17d8686ce105b4b58def546bbee39e86eb8b5f5860a3cc7e72cac72315cb4d7abe5cf513e201b3e0c44cfe8fda436ad877e91c6806644b1d609382a83dd";
         String hashedPassword = get_SHA_512_SecurePassword(password, salt);
 
+
     boolean realUser = database.LoginToSystem(username, hashedPassword);
 String guiType = null;
     if(realUser)

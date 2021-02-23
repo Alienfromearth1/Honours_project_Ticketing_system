@@ -38,9 +38,8 @@ public class Database {
             while (cur.hasNext()) {
                 Document doc = cur.next();
                 List list = new ArrayList(doc.values());
-                if (username.equals(list.get(3)) && list.get(idNum).equals(true))
+                if (username.equals(list.get(4)) && list.get(idNum).equals(true))
                 {
-                    System.out.println(idNum);
                     userType = true;
                     break label;
                 }
@@ -51,14 +50,10 @@ public class Database {
         return userType;
     }
 
-    public void CheckIfAdmin(String username)
-    {
-
-    }
-
-
     public boolean LoginToSystem(String username, String password) {
         boolean validLogin = false;
+
+
 
         label:
         try {
@@ -67,7 +62,7 @@ public class Database {
             while (cur.hasNext()) {
                 Document doc = cur.next();
                 List list = new ArrayList(doc.values());
-                if (username.equals(list.get(3)) && password.equals(list.get(4)))
+                if (username.equals(list.get(4)) && password.equals(list.get(5)))
                 {
                     validLogin = true;
                     break label;
@@ -80,21 +75,9 @@ public class Database {
         } catch (Exception e) {
             System.out.println(e);
         }
+        System.out.println(validLogin);
         return validLogin;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public void LoadPreviousTickets(ListView lstPreviousTicket) {
         try {
@@ -104,6 +87,20 @@ public class Database {
                 Document doc = cur.next();
                 List list = new ArrayList(doc.values());
                 lstPreviousTicket.getItems().add(list.get(1));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void LoadOpenTickets(ListView lstPreviousTicket) {
+        try {
+            MongoCollection<Document> col = database.getCollection("OpenTickets");
+            MongoCursor<Document> cur = col.find().iterator();
+            while (cur.hasNext()) {
+                Document doc = cur.next();
+                List list = new ArrayList(doc.values());
+                lstPreviousTicket.getItems().add(list.get(2));
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -184,6 +181,15 @@ public class Database {
         {
             System.out.println(e);
         }
+    }
+
+    public void CreateTicket(String username, String issueInfo)
+    {
+        MongoCollection<Document> col = database.getCollection("OpenTickets");
+        Document ticket = new Document
+                ("CustomerUsername", username).append
+                ("CustomerIssue", issueInfo);
+        col.insertOne(ticket);
     }
 
 }
