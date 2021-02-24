@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 
 public class TicketChatGUIController implements Initializable {
 
+
     // ============================== VARIABLES ==============================
     Menu menu = new Menu();
     @FXML private Button btnMenu;
@@ -21,10 +22,14 @@ public class TicketChatGUIController implements Initializable {
     @FXML private TextField txtChat;
     @FXML private ListView lstChat;
     @FXML private Label lblInformation;
+    @FXML private Label lblCustomer;
+    @FXML private Label lblTechnician;
 
     //Initialise
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        menu.getTickets().getUsers().getDatabase().getOngoingTicketInfo(menu.getUsername(), lblInformation, lblCustomer, lblTechnician);
 
     }
 
@@ -36,5 +41,16 @@ public class TicketChatGUIController implements Initializable {
     public void ReturnToMenu(ActionEvent event) throws Exception
     {
     menu.ReturnToMenu(btnMenu, menu.getGuiType());
+    }
+
+
+    public void CloseTicket(ActionEvent event)
+    {
+
+        String[] splitCustomer = lblCustomer.getText().toString().split(" ", 3);
+        String[] splitTechnician = lblTechnician.getText().toString().split(" ", 3);
+
+
+       menu.getTickets().getUsers().getDatabase().TechnicianCloseTicket(splitTechnician[1], splitCustomer[1], lblInformation.getText());
     }
 }

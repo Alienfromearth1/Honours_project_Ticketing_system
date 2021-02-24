@@ -3,15 +3,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaControllerCode.TicketChatGUIController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaControllerCode.TicketChatGUIController">
    <children>
       <Pane prefHeight="600.0" prefWidth="800.0">
          <children>
             <Button fx:id="btnMenu" layoutX="90.0" layoutY="489.0" mnemonicParsing="false" onAction="#ReturnToMenu" text="Menu" />
-            <Button fx:id="btnCloseTicket" layoutX="621.0" layoutY="477.0" mnemonicParsing="false" text="Close Ticket" />
+            <Button fx:id="btnCloseTicket" layoutX="621.0" layoutY="477.0" mnemonicParsing="false" onAction="#CloseTicket" text="Close Ticket" />
             <TextField fx:id="txtChat" layoutX="204.0" layoutY="432.0" />
-            <ListView fx:id="lstChat" layoutX="178.0" layoutY="159.0" prefHeight="200.0" prefWidth="200.0" />
-            <Label fx:id="lblInformation" layoutX="278.0" layoutY="57.0" text="Ticket Info" />
+            <ListView fx:id="lstChat" layoutX="178.0" layoutY="159.0" prefHeight="200.0" prefWidth="480.0" />
+            <Label fx:id="lblInformation" layoutX="176.0" layoutY="116.0" text="Ticket Info" />
+            <Label fx:id="lblCustomer" layoutX="178.0" layoutY="369.0" text="Label" />
+            <Label fx:id="lblTechnician" layoutX="607.0" layoutY="378.0" text="Label" />
          </children></Pane>
    </children>
 </AnchorPane>

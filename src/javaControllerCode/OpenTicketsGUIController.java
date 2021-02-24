@@ -33,7 +33,16 @@ public class OpenTicketsGUIController implements Initializable {
     }
 
     // ============================== BUTTON CONTROLLER ==============================
-    public void ReturnToMenu(ActionEvent event) throws Exception {
+    public void ReturnToMenu() throws Exception {
         menu.ReturnToMenu(btnMenu, menu.getGuiType());
+    }
+
+
+    public void SelectTicket(ActionEvent event) {
+        String temp = lstOpenTickets.getSelectionModel().getSelectedItem().toString();
+        System.out.println(temp);
+        String[] split = temp.split(" ", 4);
+        menu.getTickets().getUsers().getDatabase().TechnicianSelectTicket(split[1], split[3], menu.getUsername());
+
     }
 }

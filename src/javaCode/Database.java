@@ -6,6 +6,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import org.bson.Document;
 
@@ -52,9 +53,6 @@ public class Database {
 
     public boolean LoginToSystem(String username, String password) {
         boolean validLogin = false;
-
-
-
         label:
         try {
             MongoCollection<Document> col = database.getCollection("Accounts");
@@ -72,12 +70,13 @@ public class Database {
                     validLogin = false;
                 }
             }
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             System.out.println(e);
         }
-        System.out.println(validLogin);
         return validLogin;
     }
+
 
     public void LoadPreviousTickets(ListView lstPreviousTicket) {
         try {
@@ -86,7 +85,7 @@ public class Database {
             while (cur.hasNext()) {
                 Document doc = cur.next();
                 List list = new ArrayList(doc.values());
-                lstPreviousTicket.getItems().add(list.get(1));
+                lstPreviousTicket.getItems().add("User submitting: " + list.get(1) + ", Ticket solved by: " + list.get(2) + ", Issue: " + list.get(3));
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -100,7 +99,7 @@ public class Database {
             while (cur.hasNext()) {
                 Document doc = cur.next();
                 List list = new ArrayList(doc.values());
-                lstPreviousTicket.getItems().add(list.get(2));
+                lstPreviousTicket.getItems().add("User: " + list.get(1) + " Issue: " + list.get(2));
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -192,4 +191,139 @@ public class Database {
         col.insertOne(ticket);
     }
 
+    public void TechnicianSelectTicket(String username, String userIssue, String techUsername)
+    {
+
+        MongoCollection<Document> col = database.getCollection("OngoingTickets");
+        Document ticket = new Document
+                ("CustomerUsername", username).append
+                ("TechnicianUsername", techUsername).append
+                ("UserIssue", userIssue);
+        col.insertOne(ticket);
+        RemoveOpenTicket(username);
+    }
+
+    public void RemoveOpenTicket(String username)
+    {
+        try
+        {
+            MongoCollection<Document> col = database.getCollection("OpenTickets");
+            MongoCursor<Document> cur = col.find().iterator();
+            while (cur.hasNext())
+            {
+                Document doc = cur.next();
+                List list = new ArrayList(doc.values());
+                if(username.equals(list.get(1)))
+                {
+                    col.deleteOne(Filters.eq("CustomerUsername", username));
+                    break;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void TechnicianCloseTicket(String technicianUsername, String customerUsername, String userIssue)
+    {
+
+        MongoCollection<Document> col = database.getCollection("Tickets");
+        Document ticket = new Document
+                ("CustomerUsername", customerUsername).append
+                ("TechnicianUsername", technicianUsername).append
+                ("UserIssue", userIssue);
+        col.insertOne(ticket);
+        RemoveOngoingTicket(customerUsername);
+    }
+
+    public void RemoveOngoingTicket(String username)
+    {
+        try
+        {
+            MongoCollection<Document> col = database.getCollection("OngoingTickets");
+            MongoCursor<Document> cur = col.find().iterator();
+            while (cur.hasNext())
+            {
+                Document doc = cur.next();
+                List list = new ArrayList(doc.values());
+                if(username.equals(list.get(1)))
+                {
+                    col.deleteOne(Filters.eq("CustomerUsername", username));
+                    break;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void getOngoingTicketInfo(String username, Label lblInformation, Label lblCustomer, Label lblTechnician)
+    {
+        try {
+            MongoCollection<Document> col = database.getCollection("OngoingTickets");
+            MongoCursor<Document> cur = col.find().iterator();
+            while (cur.hasNext()) {
+                Document doc = cur.next();
+                List list = new ArrayList(doc.values());
+                if (username.equals(list.get(1)))
+                {
+                   lblInformation.setText(list.get(3).toString());
+                    lblTechnician.setText("Technician: " + list.get(2).toString());
+                    lblCustomer.setText("User: " + list.get(1).toString());
+                }
+                else if (username.equals(list.get(3).toString()))
+                {
+                    lblInformation.setText(list.get(3).toString());
+                    lblTechnician.setText("Technician: " + list.get(2).toString());
+                    lblCustomer.setText("User: " + list.get(1).toString());
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
 }

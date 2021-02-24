@@ -37,6 +37,5 @@ menu.ReturnToMenu(btnMenu, menu.getGuiType());
     public void CreateNewTicket()
     {
         menu.getTickets().getUsers().getDatabase().CreateTicket(menu.getUsername(), txtUserProblem.getText());
-
     }
 }
