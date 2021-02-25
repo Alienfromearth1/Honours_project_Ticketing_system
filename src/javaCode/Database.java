@@ -20,6 +20,7 @@ public class Database {
     MongoClient mongoClient = new MongoClient(uri);
     MongoDatabase database = mongoClient.getDatabase("TicketingSystem");
 
+
     // ============================== CONSTRUCTOR ==============================
     public Database() {
         //Stops console spam from MongoDB
@@ -35,12 +36,9 @@ public class Database {
         label:
         try {
             MongoCollection<Document> col = database.getCollection("Accounts");
-            MongoCursor<Document> cur = col.find().iterator();
-            while (cur.hasNext()) {
-                Document doc = cur.next();
+            for (Document doc : col.find()) {
                 List list = new ArrayList(doc.values());
-                if (username.equals(list.get(4)) && list.get(idNum).equals(true))
-                {
+                if (username.equals(list.get(4)) && list.get(idNum).equals(true)) {
                     userType = true;
                     break label;
                 }
@@ -272,33 +270,6 @@ public class Database {
             System.out.println(e);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public void getOngoingTicketInfo(String username, Label lblInformation, Label lblCustomer, Label lblTechnician)
     {

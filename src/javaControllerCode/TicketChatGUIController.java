@@ -8,11 +8,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TicketChatGUIController implements Initializable {
+
 
 
     // ============================== VARIABLES ==============================
@@ -24,12 +28,18 @@ public class TicketChatGUIController implements Initializable {
     @FXML private Label lblInformation;
     @FXML private Label lblCustomer;
     @FXML private Label lblTechnician;
-
+    @FXML private ImageView imgUserImage;
+    String[] split;
     //Initialise
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         menu.getTickets().getUsers().getDatabase().getOngoingTicketInfo(menu.getUsername(), lblInformation, lblCustomer, lblTechnician);
+
+        String temp = lblInformation.getText();
+        split = temp.split(" ", 4);
+
+        DisplayImage(split[2]);
 
     }
 
@@ -52,5 +62,12 @@ public class TicketChatGUIController implements Initializable {
 
 
        menu.getTickets().getUsers().getDatabase().TechnicianCloseTicket(splitTechnician[1], splitCustomer[1], lblInformation.getText());
+    }
+
+
+    public void DisplayImage(String username)
+    {
+        Image image = new Image(new File(menu.getUsername() + ".png").toURI().toString());
+        imgUserImage.setImage(image);
     }
 }
