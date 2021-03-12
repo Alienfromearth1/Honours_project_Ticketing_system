@@ -4,9 +4,8 @@ import javaCode.Menu;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 import javax.imageio.ImageIO;
@@ -34,9 +33,8 @@ public class CreateTicketGUIController extends Component implements Initializabl
     @FXML private Button btnCreateTicket;
     @FXML private Button btnUpload;
     @FXML private TextArea txtUserProblem;
-    //@FXML private Label lblImage;
-    @FXML private ImageView imgView;
     @FXML private Pane frame;
+    @FXML private Label lblImageSource;
     //Initialise
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -72,12 +70,11 @@ menu.ReturnToMenu(btnMenu, menu.getGuiType());
             chooser.showOpenDialog(null);
             File file = chooser.getSelectedFile();
             fileName = file.getAbsolutePath();
-
+            lblImageSource.setText(file.toString());
         BufferedImage bufferedImage = ImageIO.read(new File(fileName));
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
 
         ImageIO.write(bufferedImage, "png", bos);
-
         data = bos.toByteArray();
     }
 
@@ -87,13 +84,4 @@ menu.ReturnToMenu(btnMenu, menu.getGuiType());
         BufferedImage bImage2 = ImageIO.read(bis);
         ImageIO.write(bImage2, "png", new File(menu.getUsername() + ".png") );
     }
-
-    public void display() throws IOException
-    {
-        Image image = new Image(new File(menu.getUsername() + ".png").toURI().toString());
-        imgView.setImage(image);
-    }
-
-
-
 }

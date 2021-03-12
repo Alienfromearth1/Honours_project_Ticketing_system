@@ -2,16 +2,20 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaControllerCode.TechnicianGUIController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaControllerCode.TechnicianGUIController">
    <children>
        <Pane prefHeight="600.0" prefWidth="800.0">
            <children>
-               <Button fx:id="btnTechnicianViewOpenTickets" layoutX="221.0" layoutY="198.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" text="View Open Tickets" />
-               <Button fx:id="btnTechnicianViewOngoingTicket" layoutX="493.0" layoutY="198.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" text="View Ongoing Ticket" />
-               <Button fx:id="btnTechnicianViewPreviousTicket" layoutX="221.0" layoutY="343.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" text="View previous tickets" />
-               <Button fx:id="btnTechnicianLogOut" layoutX="493.0" layoutY="356.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" text="Logout" />
-            <Label layoutX="193.0" layoutY="137.0" text="Label" />
+               <Button fx:id="btnTechnicianViewOpenTickets" layoutX="150.0" layoutY="160.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="View Open Tickets" />
+               <Button fx:id="btnTechnicianViewOngoingTicket" layoutX="500.0" layoutY="160.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="View Ongoing Ticket" />
+               <Button fx:id="btnTechnicianViewPreviousTicket" layoutX="150.0" layoutY="380.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="View previous tickets" />
+               <Button fx:id="btnTechnicianLogOut" layoutX="500.0" layoutY="380.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="Logout" />
+            <Label layoutX="250.0" layoutY="50.0" text="Technician Menu">
+               <font>
+                  <Font size="40.0" />
+               </font></Label>
            </children></Pane>
    </children>
 </AnchorPane>

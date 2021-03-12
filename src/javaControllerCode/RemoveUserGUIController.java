@@ -17,7 +17,6 @@ public class RemoveUserGUIController implements Initializable {
     @FXML private Button btnMenu;
     @FXML private Button btnRemoveUser;
     @FXML private ListView lstUsers;
-    @FXML private Button load;
 
     //Initialise
     @Override
@@ -35,7 +34,8 @@ public class RemoveUserGUIController implements Initializable {
         menu.ReturnToMenu(btnMenu, menu.getGuiType());
     }
 
-    public void loadUsers(ActionEvent actionEvent) {
-        menu.getTickets().getUsers().getDatabase().LoadUsers(lstUsers);
+    public void RemoveUser(ActionEvent event)
+    {
+
     }
 }

@@ -9,7 +9,6 @@ import com.mongodb.client.model.Filters;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import org.bson.Document;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -223,18 +222,6 @@ public class Database {
             System.out.println(e);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
     public void TechnicianCloseTicket(String technicianUsername, String customerUsername, String userIssue)
     {

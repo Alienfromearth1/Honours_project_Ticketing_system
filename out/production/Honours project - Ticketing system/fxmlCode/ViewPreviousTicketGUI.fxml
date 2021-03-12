@@ -3,12 +3,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaControllerCode.PreviousTicketsGUIController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaControllerCode.PreviousTicketsGUIController">
    <children>
       <Pane prefHeight="600.0" prefWidth="800.0">
          <children>
-            <Button fx:id="btnMenu" layoutX="647.0" layoutY="515.0" mnemonicParsing="false" onAction="#ReturnToMenu" text="Return to Menu" />
-            <ListView fx:id="lstPreviousTicket" layoutX="148.0" layoutY="69.0" prefHeight="200.0" prefWidth="200.0" />
+            <Button fx:id="btnMenu" layoutX="296.0" layoutY="535.0" mnemonicParsing="false" onAction="#ReturnToMenu" prefHeight="51.0" prefWidth="208.0" text="Return to Menu" />
+            <ListView fx:id="lstPreviousTicket" layoutX="25.0" layoutY="43.0" prefHeight="435.0" prefWidth="750.0" />
          </children>
       </Pane>
    </children>
