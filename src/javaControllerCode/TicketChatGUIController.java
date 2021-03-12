@@ -36,11 +36,16 @@ public class TicketChatGUIController implements Initializable {
 
         menu.getTickets().getUsers().getDatabase().getOngoingTicketInfo(menu.getUsername(), lblInformation, lblCustomer, lblTechnician);
 
+
         String temp = lblInformation.getText();
         split = temp.split(" ", 4);
+        try {
+            DisplayImage(split[2]);
+        }
+        catch (Exception e)
+        {
 
-        DisplayImage(split[2]);
-
+        }
     }
 
     // ============================== CONSTRUCTOR ==============================
@@ -67,7 +72,8 @@ public class TicketChatGUIController implements Initializable {
 
     public void DisplayImage(String username)
     {
-        Image image = new Image(new File(menu.getUsername() + ".png").toURI().toString());
-        imgUserImage.setImage(image);
+            Image image = new Image(new File(menu.getUsername() + ".png").toURI().toString());
+            imgUserImage.setImage(image);
+
     }
 }

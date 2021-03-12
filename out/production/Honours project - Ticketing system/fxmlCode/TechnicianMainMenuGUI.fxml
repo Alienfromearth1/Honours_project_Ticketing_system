@@ -8,15 +8,15 @@
    <children>
        <Pane prefHeight="600.0" prefWidth="800.0">
            <children>
-               <Button fx:id="btnTechnicianViewOpenTickets" layoutX="146.0" layoutY="161.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="View Open Tickets" />
-               <Button fx:id="btnTechnicianViewOngoingTicket" layoutX="493.0" layoutY="161.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="View Ongoing Ticket" />
-               <Button fx:id="btnTechnicianViewPreviousTicket" layoutX="146.0" layoutY="356.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="View previous tickets" />
-               <Button fx:id="btnTechnicianLogOut" layoutX="493.0" layoutY="356.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="Logout" />
-            <Label layoutX="231.0" layoutY="65.0" text="Technician Menu">
+            <Label layoutX="159.0" layoutY="189.0" text="Complete ongoing ticket" />
+               <Button fx:id="btnTechnicianViewOpenTickets" layoutX="150.0" layoutY="160.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="View Open Tickets" />
+               <Button fx:id="btnTechnicianViewOngoingTicket" layoutX="500.0" layoutY="160.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="View Ongoing Ticket" />
+               <Button fx:id="btnTechnicianViewPreviousTicket" layoutX="150.0" layoutY="380.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="View previous tickets" />
+               <Button fx:id="btnTechnicianLogOut" layoutX="500.0" layoutY="380.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="Logout" />
+            <Label layoutX="250.0" layoutY="50.0" text="Technician Menu">
                <font>
-                  <Font name="Arial" size="40.0" />
-               </font>
-            </Label>
+                  <Font size="40.0" />
+               </font></Label>
            </children></Pane>
    </children>
 </AnchorPane>

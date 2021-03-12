@@ -103,34 +103,20 @@ public class Database {
         }
     }
 
-    public void LoadUsers(ListView lstUsers) {
-        try {
-            MongoCollection<Document> col = database.getCollection("Accounts");
-            MongoCursor<Document> cur = col.find().iterator();
-            while (cur.hasNext()) {
-                Document doc = cur.next();
-                List list = new ArrayList(doc.values());
-                lstUsers.getItems().add(list.get(3));
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
     public boolean CheckUsersNotDuplicate(String username) {
         boolean duplicate = false;
         try {
             MongoCollection<Document> col = database.getCollection("Accounts");
             MongoCursor<Document> cur = col.find().iterator();
-
+label:
             while (cur.hasNext())
             {
                 Document doc = cur.next();
                 List list = new ArrayList(doc.values());
-                if (list.get(3).equals(username))
+                if (list.get(4).equals(username))
                 {
                     duplicate = true;
-                    break;
+                    break label;
                 }
                 else
                     {
@@ -142,6 +128,58 @@ public class Database {
         }
         return duplicate;
     }
+
+    public boolean CheckIfHasTicket(String username, int id) {
+        boolean duplicate = false;
+        try {
+            MongoCollection<Document> col = database.getCollection("OngoingTickets");
+            MongoCursor<Document> cur = col.find().iterator();
+            label:
+            while (cur.hasNext())
+            {
+                Document doc = cur.next();
+                List list = new ArrayList(doc.values());
+                if (list.get(id).equals(username))
+                {
+                    duplicate = true;
+                    break label;
+                }
+                else
+                {
+                    duplicate = false;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return duplicate;
+    }
+    public boolean CheckIfHasOpenTicket(String username, int id) {
+        boolean duplicate = false;
+        try {
+            MongoCollection<Document> col = database.getCollection("OpenTickets");
+            MongoCursor<Document> cur = col.find().iterator();
+            label:
+            while (cur.hasNext())
+            {
+                Document doc = cur.next();
+                List list = new ArrayList(doc.values());
+                if (list.get(id).equals(username))
+                {
+                    duplicate = true;
+                    break label;
+                }
+                else
+                {
+                    duplicate = false;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return duplicate;
+    }
+
 
     public void AddUsers(String fName, String sName, String username, boolean technician, String hashedPassword)
     {

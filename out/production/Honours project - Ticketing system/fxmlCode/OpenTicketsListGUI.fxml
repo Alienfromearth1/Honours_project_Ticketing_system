@@ -7,9 +7,9 @@
    <children>
       <Pane prefHeight="600.0" prefWidth="800.0">
          <children>
-            <Button fx:id="btnMenu" layoutX="94.0" layoutY="504.0" mnemonicParsing="false" onAction="#ReturnToMenu" text="Menu" />
-            <Button fx:id="btnSelectTicket" layoutX="553.0" layoutY="454.0" mnemonicParsing="false" onAction="#SelectTicket" text="Select Ticket" />
-            <ListView fx:id="lstOpenTickets" layoutX="294.0" layoutY="107.0" prefHeight="200.0" prefWidth="200.0" />
+            <Button fx:id="btnMenu" layoutX="27.0" layoutY="492.0" mnemonicParsing="false" onAction="#ReturnToMenu" prefHeight="75.0" prefWidth="150.0" text="Menu" />
+            <Button fx:id="btnSelectTicket" layoutX="623.0" layoutY="492.0" mnemonicParsing="false" onAction="#SelectTicket" prefHeight="75.0" prefWidth="150.0" text="Select Ticket" />
+            <ListView fx:id="lstOpenTickets" layoutX="27.0" layoutY="112.0" prefHeight="331.0" prefWidth="746.0" />
          </children></Pane>
    </children>
 </AnchorPane>

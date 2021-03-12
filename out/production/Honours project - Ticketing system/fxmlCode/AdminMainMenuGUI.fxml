@@ -7,11 +7,11 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaControllerCode.AdminGuiController">
     <Pane prefHeight="600.0" prefWidth="800.0">
         <children>
-            <Button fx:id="btnAdminAddUser" layoutX="146.0" layoutY="161.0" mnemonicParsing="false" onAction="#AdminMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="Add User" />
-            <Button fx:id="btnAdminRemoveUser" layoutX="493.0" layoutY="161.0" mnemonicParsing="false" onAction="#AdminMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="Remove user" />
-            <Button fx:id="btnAdminViewPreviousTicket" layoutX="146.0" layoutY="381.0" mnemonicParsing="false" onAction="#AdminMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="View previous tickets" />
-            <Button fx:id="btnAdminLogOut" layoutX="493.0" layoutY="381.0" mnemonicParsing="false" onAction="#AdminMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="Logout" />
-         <Label layoutX="285.0" layoutY="70.0" text="Admin Menu">
+            <Button fx:id="btnAdminAddUser" layoutX="150.0" layoutY="160.0" mnemonicParsing="false" onAction="#AdminMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="Add User" />
+            <Button fx:id="btnAdminRemoveUser" layoutX="500.0" layoutY="160.0" mnemonicParsing="false" onAction="#AdminMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="Remove user" />
+            <Button fx:id="btnAdminViewPreviousTicket" layoutX="150.0" layoutY="380.0" mnemonicParsing="false" onAction="#AdminMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="View previous tickets" />
+            <Button fx:id="btnAdminLogOut" layoutX="500.0" layoutY="380.0" mnemonicParsing="false" onAction="#AdminMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="Logout" />
+         <Label layoutX="285.0" layoutY="50.0" text="Admin Menu">
             <font>
                <Font size="40.0" />
             </font>

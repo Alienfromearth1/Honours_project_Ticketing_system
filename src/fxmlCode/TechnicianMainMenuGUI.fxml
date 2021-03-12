@@ -8,6 +8,7 @@
    <children>
        <Pane prefHeight="600.0" prefWidth="800.0">
            <children>
+            <Label layoutX="159.0" layoutY="189.0" text="Complete ongoing ticket" />
                <Button fx:id="btnTechnicianViewOpenTickets" layoutX="150.0" layoutY="160.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="View Open Tickets" />
                <Button fx:id="btnTechnicianViewOngoingTicket" layoutX="500.0" layoutY="160.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="View Ongoing Ticket" />
                <Button fx:id="btnTechnicianViewPreviousTicket" layoutX="150.0" layoutY="380.0" mnemonicParsing="false" onAction="#TechnicianMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="View previous tickets" />

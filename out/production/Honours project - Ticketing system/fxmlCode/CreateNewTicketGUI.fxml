@@ -7,8 +7,8 @@
    <children>
       <Pane fx:id="frame" prefHeight="600.0" prefWidth="800.0">
          <children>
-            <Button fx:id="btnMenu" layoutX="93.0" layoutY="489.0" mnemonicParsing="false" onAction="#ReturnToMenu" prefHeight="75.0" prefWidth="150.0" text="Return to menu" />
-            <Button fx:id="btnCreateTicket" layoutX="468.0" layoutY="458.0" mnemonicParsing="false" onAction="#CreateNewTicket" prefHeight="75.0" prefWidth="150.0" text="Create ticket" />
+            <Button fx:id="btnMenu" layoutX="157.0" layoutY="489.0" mnemonicParsing="false" onAction="#ReturnToMenu" prefHeight="75.0" prefWidth="150.0" text="Return to menu" />
+            <Button fx:id="btnCreateTicket" layoutX="508.0" layoutY="489.0" mnemonicParsing="false" onAction="#CreateNewTicket" prefHeight="75.0" prefWidth="150.0" text="Create ticket" />
             <Button fx:id="btnUpload" layoutX="157.0" layoutY="321.0" mnemonicParsing="false" onAction="#UploadImage" text="upload image" />
             <Label layoutX="624.0" layoutY="399.0" prefHeight="17.0" prefWidth="36.0" textAlignment="RIGHT" />
             <TextArea fx:id="txtUserProblem" layoutX="157.0" layoutY="105.0" prefHeight="200.0" prefWidth="501.0" />

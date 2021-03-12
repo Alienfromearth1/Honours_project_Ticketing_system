@@ -21,7 +21,12 @@ public class TechnicianGUIController implements Initializable {
 
     //Initialise
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources)
+    {
+
+    if (menu.getTickets().getUsers().getDatabase().CheckIfHasTicket(menu.getUsername(), 2)) {
+      btnTechnicianViewOpenTickets.setVisible(false);
+    }
 
     }
 
@@ -29,11 +34,6 @@ public class TechnicianGUIController implements Initializable {
     public TechnicianGUIController(){}
 
     // ============================== BUTTON CONTROL ==============================
-
-    public void test()
-    {
-
-    }
 
     public void TechnicianMainMenuOptions(ActionEvent event) throws IOException {
        menu.TechnicianMainMenuOptions(event, btnTechnicianLogOut, btnTechnicianViewOngoingTicket, btnTechnicianViewOpenTickets, btnTechnicianViewPreviousTicket);
