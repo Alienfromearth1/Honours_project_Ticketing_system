@@ -8,7 +8,7 @@
    <children>
       <Pane prefHeight="600.0" prefWidth="800.0">
          <children>
-            <Label fx:id="lblNotify" layoutX="63.0" layoutY="125.0" text="Label" />
+            <Label fx:id="lblNotify" layoutX="211.0" layoutY="189.0" text="Label" textAlignment="CENTER" />
             <Button fx:id="btnCustomerTicketCreate" layoutX="150.0" layoutY="160.0" mnemonicParsing="false" onAction="#CustomerMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="Create New Ticket" />
             <Button fx:id="btnViewOngoingTicket" layoutX="500.0" layoutY="160.0" mnemonicParsing="false" onAction="#CustomerMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="View Ongoing Ticket" />
             <Button fx:id="btnViewPreviousTicket" layoutX="150.0" layoutY="380.0" mnemonicParsing="false" onAction="#CustomerMainMenuOptions" prefHeight="75.0" prefWidth="150.0" text="View previous tickets" />

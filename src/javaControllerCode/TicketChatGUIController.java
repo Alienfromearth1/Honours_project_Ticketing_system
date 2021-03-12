@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import javax.swing.*;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,23 +30,16 @@ public class TicketChatGUIController implements Initializable {
     @FXML private Label lblCustomer;
     @FXML private Label lblTechnician;
     @FXML private ImageView imgUserImage;
-    String[] split;
     //Initialise
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
+    public void initialize(URL location, ResourceBundle resources)
+    {
         menu.getTickets().getUsers().getDatabase().getOngoingTicketInfo(menu.getUsername(), lblInformation, lblCustomer, lblTechnician);
-
-
-        String temp = lblInformation.getText();
-        split = temp.split(" ", 4);
-        try {
-            DisplayImage(split[2]);
-        }
-        catch (Exception e)
+        try
         {
-
+            DisplayImage();
         }
+        catch (Exception e) {}
     }
 
     // ============================== CONSTRUCTOR ==============================
@@ -58,22 +52,19 @@ public class TicketChatGUIController implements Initializable {
     menu.ReturnToMenu(btnMenu, menu.getGuiType());
     }
 
-
     public void CloseTicket(ActionEvent event)
     {
-
         String[] splitCustomer = lblCustomer.getText().toString().split(" ", 3);
         String[] splitTechnician = lblTechnician.getText().toString().split(" ", 3);
-
-
-       menu.getTickets().getUsers().getDatabase().TechnicianCloseTicket(splitTechnician[1], splitCustomer[1], lblInformation.getText());
+        String note = JOptionPane.showInputDialog("Enter finishing note");
+        menu.getTickets().getUsers().getDatabase().TechnicianCloseTicket(splitTechnician[1], splitCustomer[1], lblInformation.getText(), note);
+        btnMenu.fire();
+        new File(menu.getUsername() + ".png").delete();
     }
 
-
-    public void DisplayImage(String username)
+    public void DisplayImage()
     {
             Image image = new Image(new File(menu.getUsername() + ".png").toURI().toString());
             imgUserImage.setImage(image);
-
     }
 }

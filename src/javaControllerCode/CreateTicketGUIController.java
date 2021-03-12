@@ -58,8 +58,12 @@ menu.ReturnToMenu(btnMenu, menu.getGuiType());
         try {
             menu.getTickets().getUsers().getDatabase().CreateTicket(menu.getUsername(), txtUserProblem.getText());
             if (data != null) {SaveImage(data);}
+            JOptionPane.showMessageDialog(null, "Ticket successfully created");
             }
-        catch (Exception e){}
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Couldn't create ticket\nIf problem persists please contact administrator");
+        }
     btnMenu.fire();
     }
 
@@ -73,7 +77,6 @@ menu.ReturnToMenu(btnMenu, menu.getGuiType());
             lblImageSource.setText(file.toString());
         BufferedImage bufferedImage = ImageIO.read(new File(fileName));
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-
         ImageIO.write(bufferedImage, "png", bos);
         data = bos.toByteArray();
     }

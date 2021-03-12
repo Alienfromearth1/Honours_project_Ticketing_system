@@ -261,14 +261,15 @@ label:
         }
     }
 
-    public void TechnicianCloseTicket(String technicianUsername, String customerUsername, String userIssue)
+    public void TechnicianCloseTicket(String technicianUsername, String customerUsername, String userIssue, String note)
     {
 
         MongoCollection<Document> col = database.getCollection("Tickets");
         Document ticket = new Document
                 ("CustomerUsername", customerUsername).append
                 ("TechnicianUsername", technicianUsername).append
-                ("UserIssue", userIssue);
+                ("UserIssue", userIssue).append
+                ("Note", note);
         col.insertOne(ticket);
         RemoveOngoingTicket(customerUsername);
     }
