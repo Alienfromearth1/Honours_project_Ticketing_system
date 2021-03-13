@@ -37,7 +37,7 @@ public class Database {
             MongoCollection<Document> col = database.getCollection("Accounts");
             for (Document doc : col.find()) {
                 List list = new ArrayList(doc.values());
-                if (username.equals(list.get(4)) && list.get(idNum).equals(true)) {
+                if (username.equals(list.get(3)) && list.get(idNum).equals(true)) {
                     userType = true;
                     break label;
                 }
@@ -57,7 +57,7 @@ public class Database {
             while (cur.hasNext()) {
                 Document doc = cur.next();
                 List list = new ArrayList(doc.values());
-                if (username.equals(list.get(4)) && password.equals(list.get(5)))
+                if (username.equals(list.get(3)) && password.equals(list.get(4)))
                 {
                     validLogin = true;
                     break label;
@@ -113,7 +113,7 @@ label:
             {
                 Document doc = cur.next();
                 List list = new ArrayList(doc.values());
-                if (list.get(4).equals(username))
+                if (list.get(3).equals(username))
                 {
                     duplicate = true;
                     break label;
@@ -311,7 +311,7 @@ label:
                     lblTechnician.setText("Technician: " + list.get(2).toString());
                     lblCustomer.setText("User: " + list.get(1).toString());
                 }
-                else if (username.equals(list.get(3).toString()))
+                else if (username.equals(list.get(2).toString()))
                 {
                     lblInformation.setText(list.get(3).toString());
                     lblTechnician.setText("Technician: " + list.get(2).toString());

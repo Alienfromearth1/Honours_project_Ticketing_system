@@ -38,11 +38,15 @@ public class Menu {
     }
 
 
+
+
+
     public void AttemptLogin(String username, String password, Button btnLogin) throws Exception {
         try
         {
-            final boolean technician = tickets.getUsers().getDatabase().userTypeCheck(username, 6);
-            final boolean admin = tickets.getUsers().getDatabase().userTypeCheck(username, 7);
+
+            final boolean technician = tickets.getUsers().getDatabase().userTypeCheck(username, 5);
+            final boolean admin = tickets.getUsers().getDatabase().userTypeCheck(username, 6);
             String guiType = tickets.getUsers().LoginToSystem(username, password, technician, admin);
             setUsername(username);
             setGuiType(guiType);
