@@ -23,18 +23,15 @@ public class TechnicianGUIController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-
-    if (menu.getTickets().getUsers().getDatabase().CheckIfHasTicket(menu.getUsername(), 2)) {
-      btnTechnicianViewOpenTickets.setVisible(false);
-    }
-
+    if (menu.getTickets().getUsers().getDatabase().CheckIfHasTicket(menu.getUsername(), 2)) {btnTechnicianViewOpenTickets.setVisible(false);}
+    else
+    {btnTechnicianViewOngoingTicket.setVisible(false);}
     }
 
     // ============================== CONSTRUCTOR ==============================
     public TechnicianGUIController(){}
 
     // ============================== BUTTON CONTROL ==============================
-
     public void TechnicianMainMenuOptions(ActionEvent event) throws IOException {
        menu.TechnicianMainMenuOptions(event, btnTechnicianLogOut, btnTechnicianViewOngoingTicket, btnTechnicianViewOpenTickets, btnTechnicianViewPreviousTicket);
     }

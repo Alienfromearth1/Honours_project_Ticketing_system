@@ -39,8 +39,13 @@ CheckTickets();
         }
         else if (menu.getTickets().getUsers().getDatabase().CheckIfHasOpenTicket(menu.getUsername(), 1))
         {
+            btnViewOngoingTicket.setVisible(false);
             btnCustomerTicketCreate.setVisible(false);
             lblNotify.setText("Currently waiting for available technician");
+        }
+        else
+        {
+            btnViewOngoingTicket.setVisible(false);
         }
     }
     // ============================== BUTTON CONTROLS ==============================

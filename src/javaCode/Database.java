@@ -82,7 +82,7 @@ public class Database {
             while (cur.hasNext()) {
                 Document doc = cur.next();
                 List list = new ArrayList(doc.values());
-                lstPreviousTicket.getItems().add("User submitting: " + list.get(1) + ", Ticket solved by: " + list.get(2) + ", Issue: " + list.get(3));
+                lstPreviousTicket.getItems().add("User submitting: " + list.get(1) + ", Ticket solved by: " + list.get(2) + ", Issue: " + list.get(3) + ", Notes: " + list.get(4));
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -128,6 +128,20 @@ label:
         }
         return duplicate;
     }
+
+public void displayUsers(ListView lstUsers) {
+        label:
+        try {
+            MongoCollection<Document> col = database.getCollection("Accounts");
+            for (Document doc : col.find()) {
+                List list = new ArrayList(doc.values());
+                lstUsers.getItems().add("Name: "+ list.get(1) + " " + list.get(2) + ", Username: " + list.get(3) + ", Technician: " + list.get(5).toString());
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
 
     public boolean CheckIfHasTicket(String username, int id) {
         boolean duplicate = false;
@@ -297,11 +311,13 @@ label:
         }
     }
 
-    public void getOngoingTicketInfo(String username, Label lblInformation, Label lblCustomer, Label lblTechnician)
+    public String getOngoingTicketInfo(String username, Label lblInformation, Label lblCustomer, Label lblTechnician)
     {
+        String image = "";
         try {
             MongoCollection<Document> col = database.getCollection("OngoingTickets");
             MongoCursor<Document> cur = col.find().iterator();
+            label:
             while (cur.hasNext()) {
                 Document doc = cur.next();
                 List list = new ArrayList(doc.values());
@@ -310,17 +326,22 @@ label:
                    lblInformation.setText(list.get(3).toString());
                     lblTechnician.setText("Technician: " + list.get(2).toString());
                     lblCustomer.setText("User: " + list.get(1).toString());
+                    image = list.get(1).toString();
+                    break label;
                 }
                 else if (username.equals(list.get(2).toString()))
                 {
                     lblInformation.setText(list.get(3).toString());
                     lblTechnician.setText("Technician: " + list.get(2).toString());
                     lblCustomer.setText("User: " + list.get(1).toString());
+                    image = list.get(1).toString();
+                    break label;
                 }
             }
         } catch (Exception e) {
             System.out.println(e);
         }
 
+        return image;
     }
 }

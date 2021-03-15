@@ -21,7 +21,9 @@ public class TicketChatGUIController implements Initializable {
 
 
     // ============================== VARIABLES ==============================
+
     Menu menu = new Menu();
+    private String userImage;
     @FXML private Button btnMenu;
     @FXML private Button btnCloseTicket;
     @FXML private TextField txtChat;
@@ -34,7 +36,7 @@ public class TicketChatGUIController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        menu.getTickets().getUsers().getDatabase().getOngoingTicketInfo(menu.getUsername(), lblInformation, lblCustomer, lblTechnician);
+        userImage = menu.getTickets().getUsers().getDatabase().getOngoingTicketInfo(menu.getUsername(), lblInformation, lblCustomer, lblTechnician);
         try
         {
             DisplayImage();
@@ -64,7 +66,7 @@ public class TicketChatGUIController implements Initializable {
 
     public void DisplayImage()
     {
-            Image image = new Image(new File(menu.getUsername() + ".png").toURI().toString());
+            Image image = new Image(new File( userImage + ".png").toURI().toString());
             imgUserImage.setImage(image);
     }
 }
