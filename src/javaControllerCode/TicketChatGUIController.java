@@ -61,7 +61,7 @@ public class TicketChatGUIController implements Initializable {
         String note = JOptionPane.showInputDialog("Enter finishing note");
         menu.getTickets().getUsers().getDatabase().TechnicianCloseTicket(splitTechnician[1], splitCustomer[1], lblInformation.getText(), note);
         btnMenu.fire();
-        new File(menu.getUsername() + ".png").delete();
+        new File(userImage + ".png").delete();
     }
 
     public void DisplayImage()
