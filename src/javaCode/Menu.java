@@ -38,15 +38,12 @@ public class Menu {
     }
 
 
-
-
-
-    public void AttemptLogin(String username, String password, Button btnLogin) throws Exception {
+    public void AttemptLogin(String username, String password, Button btnLogin) {
+        //Attempts to login to system.
         try
         {
-
-            final boolean technician = tickets.getUsers().getDatabase().userTypeCheck(username, 5);
-            final boolean admin = tickets.getUsers().getDatabase().userTypeCheck(username, 6);
+            final boolean technician = tickets.getUsers().userTypeCheck(username, 5);
+            final boolean admin = tickets.getUsers().userTypeCheck(username, 6);
             String guiType = tickets.getUsers().LoginToSystem(username, password, technician, admin);
             setUsername(username);
             setGuiType(guiType);
@@ -57,11 +54,9 @@ public class Menu {
             Run(root, stage);
         }
         catch (Exception e)
-        {
-            System.out.println(e);
-        }
+        {System.out.println(e);}
     }
-
+    //Main menu options for each menu.
     public void TechnicianMainMenuOptions(ActionEvent event, Button btnTechnicianLogOut, Button btnTechnicianViewOngoingTicket, Button btnTechnicianViewOpenTickets, Button btnTechnicianViewPreviousTicket) throws IOException {
         Stage stage;
         Parent root;
@@ -131,6 +126,7 @@ public class Menu {
         Run(root, stage);
     }
 
+    //Sends user back to menu.
     public void ReturnToMenu(Button btnMenu, String guiType) throws Exception {
 
         Stage stage;
@@ -140,7 +136,7 @@ public class Menu {
 
         Run(root, stage);
     }
-
+        //Sets scene for menu.
         public void Run (Parent root, Stage stage)
         {
             Scene scene = new Scene(root);

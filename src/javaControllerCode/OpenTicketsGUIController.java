@@ -22,7 +22,7 @@ public class OpenTicketsGUIController implements Initializable {
     //Initialise
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        menu.getTickets().getUsers().getDatabase().LoadOpenTickets(lstOpenTickets);
+        menu.getTickets().LoadOpenTickets(lstOpenTickets);
     }
 
     // ============================== CONSTRUCTOR ==============================
@@ -38,7 +38,7 @@ public class OpenTicketsGUIController implements Initializable {
     public void SelectTicket(ActionEvent event) {
         String temp = lstOpenTickets.getSelectionModel().getSelectedItem().toString();
         String[] split = temp.split(" ", 4);
-        menu.getTickets().getUsers().getDatabase().TechnicianSelectTicket(split[1], split[3], menu.getUsername());
+        menu.getTickets().TechnicianSelectTicket(split[1], split[3], menu.getUsername());
         JOptionPane.showMessageDialog(null, "Ticket successfully selected");
         btnMenu.fire();
     }

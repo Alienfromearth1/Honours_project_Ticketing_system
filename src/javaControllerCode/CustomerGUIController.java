@@ -33,11 +33,11 @@ CheckTickets();
     @FXML
     private void CheckTickets()
     {
-        if (menu.getTickets().getUsers().getDatabase().CheckIfHasTicket(menu.getUsername(), 2)) {
+        if (menu.getTickets().CheckIfHasTicket(menu.getUsername(), 2)) {
             btnCustomerTicketCreate.setVisible(false);
             lblNotify.setText("Please go to ticket chat");
         }
-        else if (menu.getTickets().getUsers().getDatabase().CheckIfHasOpenTicket(menu.getUsername(), 1))
+        else if (menu.getTickets().CheckIfHasOpenTicket(menu.getUsername(), 1))
         {
             btnViewOngoingTicket.setVisible(false);
             btnCustomerTicketCreate.setVisible(false);
@@ -48,12 +48,11 @@ CheckTickets();
             btnViewOngoingTicket.setVisible(false);
         }
     }
+
     // ============================== BUTTON CONTROLS ==============================
     @FXML
         private void CustomerMainMenuOptions(ActionEvent event) throws Exception
         {
             menu.CustomerMainMenuOptions(event, btnCustomerTicketCreate, btnCustomerLogOut, btnViewOngoingTicket, btnViewPreviousTicket);
         }
-
-
 }

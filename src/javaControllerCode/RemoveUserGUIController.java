@@ -22,7 +22,7 @@ public class RemoveUserGUIController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        menu.getTickets().getUsers().getDatabase().displayUsers(lstUsers);
+        menu.getTickets().getUsers().displayUsers(lstUsers);
     }
 
     // ============================== CONSTRUCTOR ==============================
@@ -36,6 +36,6 @@ public class RemoveUserGUIController implements Initializable {
 
     public void RemoveUser(ActionEvent event)
     {
-        menu.getTickets().getUsers().getDatabase().RemoveUsers(lstUsers.getSelectionModel().getSelectedItem().toString());
+        menu.getTickets().getUsers().RemoveUsers(lstUsers.getSelectionModel().getSelectedItem().toString());
     }
 }

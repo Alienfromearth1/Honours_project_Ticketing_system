@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.Pane;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -24,39 +23,30 @@ public class CreateTicketGUIController extends Component implements Initializabl
 
 
     // ============================== VARIABLES ==============================
-
     byte[] data = null;
     String fileName = null;
-
     Menu menu = new Menu();
     @FXML private Button btnMenu;
-    @FXML private Button btnCreateTicket;
-    @FXML private Button btnUpload;
     @FXML private TextArea txtUserProblem;
-    @FXML private Pane frame;
     @FXML private Label lblImageSource;
-    //Initialise
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
 
-    }
+    //Initialise
+    @Override public void initialize(URL location, ResourceBundle resources) {}
 
     // ============================== CONSTRUCTOR ==============================
-    public CreateTicketGUIController()
-    {
-    }
+    public CreateTicketGUIController(){}
 
     // ============================== BUTTON CONTROLLER ==============================
     public void ReturnToMenu() throws Exception
     {
-menu.ReturnToMenu(btnMenu, menu.getGuiType());
+        menu.ReturnToMenu(btnMenu, Menu.getGuiType());
     }
 
     @FXML
-    public void CreateNewTicket() throws IOException {
-
+    public void CreateNewTicket()
+    {
         try {
-            menu.getTickets().getUsers().getDatabase().CreateTicket(menu.getUsername(), txtUserProblem.getText());
+            menu.getTickets().CreateTicket(Menu.getUsername(), txtUserProblem.getText());
             if (data != null) {SaveImage(data);}
             JOptionPane.showMessageDialog(null, "Ticket successfully created");
             }
@@ -64,27 +54,26 @@ menu.ReturnToMenu(btnMenu, menu.getGuiType());
         {
             JOptionPane.showMessageDialog(null, "Couldn't create ticket\nIf problem persists please contact administrator");
         }
-    btnMenu.fire();
+        btnMenu.fire();
     }
 
     @FXML
-    public void UploadImage() throws IOException {
-
+    public void UploadImage() throws IOException
+    {
             JFileChooser chooser = new JFileChooser();
             chooser.showOpenDialog(null);
             File file = chooser.getSelectedFile();
             fileName = file.getAbsolutePath();
             lblImageSource.setText(file.toString());
-        BufferedImage bufferedImage = ImageIO.read(new File(fileName));
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        ImageIO.write(bufferedImage, "png", bos);
-        data = bos.toByteArray();
+            BufferedImage bufferedImage = ImageIO.read(new File(fileName));
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            ImageIO.write(bufferedImage, "png", bos);
+            data = bos.toByteArray();
     }
-
 
     public void SaveImage(byte[] data) throws IOException {
         ByteArrayInputStream bis = new ByteArrayInputStream(data);
         BufferedImage bImage2 = ImageIO.read(bis);
-        ImageIO.write(bImage2, "png", new File(menu.getUsername() + ".png") );
+        ImageIO.write(bImage2, "png", new File(Menu.getUsername() + ".png") );
     }
 }

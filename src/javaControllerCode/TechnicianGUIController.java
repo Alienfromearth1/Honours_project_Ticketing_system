@@ -23,7 +23,7 @@ public class TechnicianGUIController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-    if (menu.getTickets().getUsers().getDatabase().CheckIfHasTicket(menu.getUsername(), 2)) {btnTechnicianViewOpenTickets.setVisible(false);}
+    if (menu.getTickets().CheckIfHasTicket(menu.getUsername(), 2)) {btnTechnicianViewOpenTickets.setVisible(false);}
     else
     {btnTechnicianViewOngoingTicket.setVisible(false);}
     }

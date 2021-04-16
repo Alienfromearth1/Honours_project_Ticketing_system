@@ -36,7 +36,7 @@ public class TicketChatGUIController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        userImage = menu.getTickets().getUsers().getDatabase().getOngoingTicketInfo(menu.getUsername(), lblInformation, lblCustomer, lblTechnician);
+        userImage = menu.getTickets().getOngoingTicketInfo(menu.getUsername(), lblInformation, lblCustomer, lblTechnician);
         try
         {
             DisplayImage();
@@ -59,7 +59,7 @@ public class TicketChatGUIController implements Initializable {
         String[] splitCustomer = lblCustomer.getText().toString().split(" ", 3);
         String[] splitTechnician = lblTechnician.getText().toString().split(" ", 3);
         String note = JOptionPane.showInputDialog("Enter finishing note");
-        menu.getTickets().getUsers().getDatabase().TechnicianCloseTicket(splitTechnician[1], splitCustomer[1], lblInformation.getText(), note);
+        menu.getTickets().TechnicianCloseTicket(splitTechnician[1], splitCustomer[1], lblInformation.getText(), note);
         btnMenu.fire();
         new File(userImage + ".png").delete();
     }

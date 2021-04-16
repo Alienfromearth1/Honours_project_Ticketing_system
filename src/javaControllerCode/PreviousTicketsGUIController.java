@@ -21,7 +21,7 @@ Menu menu = new Menu();
     //Initialise
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    tickets.getUsers().getDatabase().LoadPreviousTickets(lstPreviousTicket);
+    tickets.LoadPreviousTickets(lstPreviousTicket);
     }
 
     // ============================== CONSTRUCTOR ==============================
