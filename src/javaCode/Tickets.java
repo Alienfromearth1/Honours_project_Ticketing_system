@@ -169,4 +169,28 @@ public class Tickets {
         catch (Exception e)
         {System.out.println(e);}
     }
+
+    public void UserChat(String technicianUser, String customerUser, String chatText)
+    {
+        MongoCollection<Document> col = getUsers().getDatabase().GetDatabase().getCollection("UserChat");
+
+        Document chatDetail = new Document
+                ("Technician", technicianUser).append
+                ("Customer", customerUser).append
+                ("ChatSentBy", Menu.getUsername()).append
+                ("Chat", chatText);
+        col.insertOne(chatDetail);
+
+    }
+    public void loadChat(ListView lstChat, String technicianUser, String customerUser) {
+        MongoCollection<Document> col = getUsers().getDatabase().GetDatabase().getCollection("UserChat");
+        lstChat.getItems().clear();
+
+        for (Document doc : col.find()) {
+            List list = new ArrayList(doc.values());
+            if (technicianUser.equals(Menu.getUsername()) || customerUser.equals(Menu.getUsername())) {
+                lstChat.getItems().add(list.get(3) +": " + list.get(4));
+            }
+        }
+    }
 }

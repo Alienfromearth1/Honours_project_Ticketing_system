@@ -10,12 +10,13 @@
          <children>
             <Button fx:id="btnMenu" layoutX="14.0" layoutY="511.0" mnemonicParsing="false" onAction="#ReturnToMenu" prefHeight="75.0" prefWidth="150.0" text="Menu" />
             <Button fx:id="btnCloseTicket" layoutX="636.0" layoutY="511.0" mnemonicParsing="false" onAction="#CloseTicket" prefHeight="75.0" prefWidth="150.0" text="Close Ticket" />
-            <TextField fx:id="txtChat" layoutX="14.0" layoutY="452.0" prefHeight="25.0" prefWidth="480.0" />
+            <TextField fx:id="txtChat" layoutX="14.0" layoutY="452.0" prefHeight="25.0" prefWidth="397.0" />
             <ListView fx:id="lstChat" layoutX="14.0" layoutY="202.0" prefHeight="250.0" prefWidth="480.0" />
             <Label fx:id="lblCustomer" layoutX="14.0" layoutY="185.0" text="Label" />
             <Label fx:id="lblTechnician" layoutX="466.0" layoutY="185.0" text="Label" textAlignment="RIGHT" />
             <ImageView fx:id="imgUserImage" fitHeight="150.0" fitWidth="200.0" layoutX="550.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="lblInformation" layoutX="14.0" layoutY="111.0" text="Ticket Info" />
+            <Button fx:id="btnSend" layoutX="410.0" layoutY="452.0" mnemonicParsing="false" onAction="#SendMessage" prefHeight="25.0" prefWidth="84.0" text="Send" />
          </children></Pane>
    </children>
 </AnchorPane>
